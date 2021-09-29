@@ -6,7 +6,7 @@ const express = require("express")
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const Animal = require("./models/animal")
-const AnimalRouter = require("./controllers/animals")
+// const AnimalRouter = require("./controllers/animals")
 
 const app = express()
 
@@ -24,7 +24,9 @@ app.use(express.static("public"))
 ////////////////////////////////////////////////
 // Index
 app.get("/animals", (req,res) => {
-    res.send("Hello World")
+    Animal.find({}, (err,animals) => {
+        res.render("animals/index.ejs", {animals})
+    })
 })
 
 ////////////////////////////////////////////////
