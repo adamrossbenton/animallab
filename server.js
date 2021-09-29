@@ -30,7 +30,9 @@ app.get("/animals", (req,res) => {
 })
 
 // New
-
+app.get("/animals/new", (req,res) => {
+    res.render("animals/new.ejs")
+})
 
 
 // Destroy
@@ -42,7 +44,11 @@ app.get("/animals", (req,res) => {
 
 
 // Create
-
+app.post("/animals", (req,res) => {
+    Animal.create(req.body, (err,animal) => {
+        res.redirect("/animals")
+    })
+})
 
 
 // Edit

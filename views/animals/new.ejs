@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/head.ejs") %> 
+<body>
+<%- include("../partials/head.ejs") %>
+    <div>
+        <h1>New Animal</h1>
+        <form action="/animals" method="POST">
+            <fieldset>
+                <label for="new-species">
+                    SPECIES: <input type="text" name="species" placeholder="Enter Species Here" id="new-species">
+                </label><br>
+                <label for="new-extinct">
+                    EXTINCT: <input type="checkbox" name="extinct" id="new-extinct">
+                </label><br>
+                <label for="new-">
+                    LOCATION: <input type="text" name="location" placeholder="Enter Location Here" id="new-location">
+                </label><br>
+                <label for="new-">
+                    LIFE EXPECTANCY: <input type="number" name="lifeExpectancy" placeholder="Enter Life Expectancy Here" id="new-lifeExpectancy">
+                </label><br>
+                <label for="new-life-expectancy">
+                    IMAGE: <input type="text" name="img" placeholder="Paste Image URL Here" id="new-img">
+                </label>
+            </fieldset>
+            <input type="submit" value="CREATE NEW ANIMAL">
+        </form>
+    </div>
+</body>
+</html>
