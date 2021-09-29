@@ -52,7 +52,7 @@ app.get("/animals", (req,res) => {
 // Send
 app.get("/animals/:id", (req,res) => {
     const id = req.params.id
-    Animal.findById(id, (err,animals) => {
+    Animal.findById(id, (err,animal) => {
         res.render("animals/show.ejs", {animal})
     })
 })

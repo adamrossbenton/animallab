@@ -3,8 +3,12 @@
 <%- include("../partials/header.ejs") %> 
 <body>
     <%- include("../partials/head.ejs") %>
-    <h1><%= animal.species %> </h1>
-    <a href="/animals/<%= animal.id %>/edit "><button>Edit</button></a>
-    <a href="/animals"><button>Back to Animals</button></a> 
+    <div>
+        <h1><%= animal.species %> </h1>
+        <img src="<%= animal.img %> ">
+        <a href="/animals/<%= animal.id %>/edit "><button>Edit</button></a>
+        
+        <a href="/animals"><button>Back to Animals</button></a> 
+    </div>
 </body>
 </html>
