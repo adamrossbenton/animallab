@@ -14,6 +14,7 @@ mongoose.connection.on("open", () => {
             extinct: false,
             location: "Africa",
             lifeExpectancy: 10,
+            img: "",
         },
         {
             species: "River Otter",

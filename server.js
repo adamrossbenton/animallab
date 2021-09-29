@@ -29,6 +29,34 @@ app.get("/animals", (req,res) => {
     })
 })
 
+// New
+
+
+
+// Destroy
+
+
+
+// Update
+
+
+
+// Create
+
+
+
+// Edit
+
+
+
+// Send
+app.get("/animals/:id", (req,res) => {
+    const id = req.params.id
+    Animal.findById(id, (err,animals) => {
+        res.render("animals/show.ejs", {animal})
+    })
+})
+
 ////////////////////////////////////////////////
 // Listener
 ////////////////////////////////////////////////
