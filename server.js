@@ -40,7 +40,13 @@ app.get("/animals/new", (req,res) => {
 
 
 // Update
-
+app.put("/animals/:id", (req,res) => {
+    const id = req.params.id
+    req.body.extinct = req.body.extinct === "on"? true : false
+    Animal.findByIdAndUpdate(id, req.body, {new: true}, (err,animal) => {
+        res.redirect("/animals")
+    } )
+})
 
 
 // Create
@@ -52,7 +58,12 @@ app.post("/animals", (req,res) => {
 
 
 // Edit
-
+app.get("/animals/:id/edit", (req,res) => {
+    const id = req.params.id
+    Animal.findById(id, (err,animal) => {
+        res.render("animals/edit.ejs", {animal})
+    })
+})
 
 
 // Send

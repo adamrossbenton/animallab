@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/head.ejs") %> 
+<body>
+<%- include("../partials/head.ejs") %>
+    <div>
+        <h1>Edit <%= animal.species %> </h1>
+        <form action="/animals/<%= animal.id %>?_method=PUT" method="POST">
+            <fieldset>
+                <label for="new-species">
+                    SPECIES: <input
+                        type="text"
+                        name="species"
+                        placeholder="Enter Species Here"
+                        id="new-species"
+                        value="<%= animal.species %> ">
+                </label><br>
+                <label for="new-extinct">
+                    EXTINCT: <input 
+                        type="checkbox" 
+                        name="extinct" 
+                        id="new-extinct"
+                        <%= animal.extinct? "checked" : "" %>>
+                </label><br>
+                <label for="new-">
+                    LOCATION: <input 
+                        type="text" 
+                        name="location" 
+                        placeholder="Enter Location Here" 
+                        id="new-location"
+                        value="<%= animal.location %> ">
+                </label><br>
+                <label for="new-">
+                    LIFE EXPECTANCY: <input 
+                        type="number" 
+                        name="lifeExpectancy" 
+                        placeholder="Enter Life Expectancy Here" 
+                        id="new-lifeExpectancy"
+                        value=<%= animal.lifeExpectancy %>>
+                </label><br>
+                <label for="new-life-expectancy">
+                    IMAGE: <input type="text" 
+                        name="img" 
+                        placeholder="Paste Image URL Here" 
+                        id="new-img"
+                        value="<%= animal.img %> ">
+                </label>
+            </fieldset>
+            <input type="submit" value="UPDATE">
+        </form>
+        <a href="/animals/<%= animal.id %>"><button>CANCEL</button></a>
+    </div>
+</body>
+</html>
