@@ -32,14 +32,11 @@ router.get("/login", (req,res) => {
 })
 
 router.post("/login", (req,res) => {
-    // use same error message for both incorrect user/pword
-    // make it harder to brute force
-    const inc = "USERNAME OR PASSWORD IS INCORRECT"
-    const {username, password} = req.body
-    User.findOne({username}, async (err,user) => {
-        if (err) res.send(inc)
+    const { username, password } = req.body
+    User.findOne({username}, async (err, user) => {
+        if (err) res.send("USER DOES NOT EXIST")
         const result = await bcrypt.compare(password, user.password)
-        if (!result) res.send(inc)
+        if (!result) res.send("USER DOES NOT EXIST")
         req.session.loggedIn = true
         req.session.username = username
         res.redirect("/animals")
