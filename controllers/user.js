@@ -40,7 +40,16 @@ router.post("/login", (req,res) => {
         if (err) res.send(inc)
         const result = await bcrypt.compare(password, user.password)
         if (!result) res.send(inc)
+        req.session.loggedIn = true
+        req.session.username = username
         res.redirect("/animals")
+    })
+})
+
+// Logout
+router.get("/logout", (req,res) => {
+    req.session.destroy((err) => {
+        res.redirect("/")
     })
 })
 
