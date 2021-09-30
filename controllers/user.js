@@ -32,6 +32,8 @@ router.get("/login", (req,res) => {
 })
 
 router.post("/login", (req,res) => {
+    // use same error message for both incorrect user/pword
+    // make it harder to brute force
     const inc = "USERNAME OR PASSWORD IS INCORRECT"
     const {username, password} = req.body
     User.findOne({username}, async (err,user) => {
