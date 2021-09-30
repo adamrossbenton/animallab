@@ -6,6 +6,7 @@ const express = require("express")
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const AnimalRouter = require("./controllers/animals")
+const UserRouter = require("./controllers/user")
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.use(methodOverride("_method"))
 app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"))
 app.use("/animals", AnimalRouter)
+app.use("/user", UserRouter)
 
 ////////////////////////////////////////////////
 // Listener
