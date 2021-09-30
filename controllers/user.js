@@ -19,8 +19,11 @@ router.get("/signup", (req,res) => {
     res.render("user/signup.ejs")
 })
 
-router.post("/signup", (req,res) => {
-    res.send("signup")
+router.post("/signup", async (req,res) => {
+    req.body.password = await bcrypt.hash(req.body.password, await bcrypt.genSalt(10))
+    User.create(req.body, (err,user) => {
+        res.redirect("/user/login")
+    })
 })
 
 // Login
@@ -29,7 +32,14 @@ router.get("/login", (req,res) => {
 })
 
 router.post("/login", (req,res) => {
-    res.send("login")
+    const inc = "USERNAME OR PASSWORD IS INCORRECT"
+    const {username, password} = req.body
+    User.findOne({username}, async (err,user) => {
+        if (err) res.send(inc)
+        const result = await bcrypt.compare(password, user.password)
+        if (!result) res.send(inc)
+        res.redirect("/animals")
+    })
 })
 
 ////////////////////////////////////////////////
