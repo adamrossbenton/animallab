@@ -6,7 +6,7 @@ const express = require("express")
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const Animal = require("./models/animal")
-// const AnimalRouter = require("./controllers/animals")
+const AnimalRouter = require("./controllers/animals")
 
 const app = express()
 
@@ -17,7 +17,7 @@ app.use(morgan("tiny"))
 app.use(methodOverride("_method"))
 app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"))
-// app.use("/animals", AnimalRouter)
+app.use("/animals", AnimalRouter)
 
 ////////////////////////////////////////////////
 // Routes (will go to Controllers)
@@ -36,7 +36,12 @@ app.get("/animals/new", (req,res) => {
 
 
 // Destroy
-
+app.delete("/animals/:id", (req,res) => {
+    const id = req.params.id
+    Animal.findByIdAndRemove(id, (err,animal) => {
+        res.redirect("/animals")
+    })
+})
 
 
 // Update
