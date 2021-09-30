@@ -6,7 +6,9 @@
     <div>
         <h1><%= animal.species %> </h1>
         <a href="/animals/<%= animal.id %>/edit "><button>Edit</button></a>
-        <a href="/animals/<%= animal.id %>/delete "><button>Delete</button></a>
+        <form action="/animals/<%= animal.id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete">
+        </form>
         <img src="<%= animal.img %> ">
         <a href="/animals"><button>Back to Animals</button></a> 
     </div>

@@ -2,7 +2,7 @@
 // Dependencies
 ////////////////////////////////////////////////
 const express = require("express")
-const animal = require("../models/animal.js")
+const Animal = require("../models/animal.js")
 
 ////////////////////////////////////////////////
 // Router
