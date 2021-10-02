@@ -38,7 +38,7 @@ mongoose.connection.on("open", () => {
             img: "https://i.imgur.com/2DU7zxu.jpeg"
         }
     ];
-    Animal.remove({}, (err,data) => {
+    Animal.deleteMany({}, (err,data) => {
         Animal.create(startAnimals, (err,data) => {
             console.log("----------ANIMALS CREATED----------")
             console.log(data)
