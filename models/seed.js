@@ -41,7 +41,7 @@ mongoose.connection.on("open", () => {
     Animal.deleteMany({}, (err,data) => {
         Animal.create(startAnimals, (err,data) => {
             console.log("----------ANIMALS CREATED----------")
-            console.log(data)
+            console.table(data)
             console.log("----------ANIMALS CREATED----------")
             mongoose.connection.close()
         })
